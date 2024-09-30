@@ -9,13 +9,13 @@ public class TimeService extends Thread {
         int setTime = 70;
         while (running) {
             setTime -= 10;
-            System.out.print("\n발주 넣을 수 있는 남은시간 " + setTime + "초 입니다.");
+            System.out.println("\n발주 넣을 수 있는 남은시간 " + setTime + "초 입니다.");
             if (setTime <= 0) {
                 running = false;
-                System.out.print("\n준비시간이 종료되었습니다. 엔터를 눌러 가게를 열어주세요.");
+                System.out.println("\n준비시간이 종료되었습니다. 엔터를 눌러 가게를 열어주세요.");
             }
             try {
-                Thread.sleep(10000); // 5초 대기
+                Thread.sleep(10000); // 10초 대기
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
