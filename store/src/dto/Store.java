@@ -1,5 +1,7 @@
 package dto;
 
+import service.StorageService;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,9 +26,11 @@ public class Store {
         this.vaultCash += price;
     }
 
+    private final StorageService storageService = new StorageService();
+
     // 발주했을 때 큐(Storage.order)에 저장, 돈 차감
     public void orderProduct(ProductType productType, int quantity) {
-        int spend = storage.orderProduct(productType, quantity, vaultCash);
+        int spend = storageService.orderProduct(productType, quantity, vaultCash, storage);
         vaultCash -= spend;
         System.out.println("남은 금액은 " + vaultCash + "원 입니다.");
     }
@@ -34,7 +38,7 @@ public class Store {
     // 큐(Storage.order)에 넣은 값을 빼서 진열대(Store.products)와 창고(Storage.storage)에 저장
     public void placeProduct() {
         // order 큐의 모든 값 빼서 진열대, 창고에 옮기기
-        storage.placeProduct(products, storeCapacity);
+        storageService.placeProduct(products, storeCapacity, storage);
     }
 
     public boolean reduceProduct(ProductType product, int quantity) {
