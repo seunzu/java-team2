@@ -1,11 +1,11 @@
 package dto;
 
 public class OrderedProduct {
-    ProductType productType = ProductType.RAMEN;
-    int num = 0;
+    ProductType productType;
+    int num;
 
     OrderedProduct(ProductType productType, int num){
         this.productType = productType;
-        this.num = num;
+        this.num = 0;
     }
 }
